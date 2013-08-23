@@ -4,11 +4,14 @@
   <groupId>sh.desire.xslt</groupId>
   <artifactId>online_xslt</artifactId>
   <version>1.0.0</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
   <name>Online XSLT</name>
-  <properties>
-    <jettyVersion>7.2.0.v20101020</jettyVersion>
-  </properties>
+  <repositories>
+    <repository>
+      <id>repo</id>
+      <url>file:///${basedir}/repo</url>
+    </repository>
+  </repositories>
   <dependencies>
     <dependency>
       <groupId>regexp</groupId>
@@ -26,24 +29,34 @@
       <version>8.7</version>
     </dependency>
     <dependency>
-      <groupId>org.eclipse.jetty</groupId>
-      <artifactId>jetty-servlet</artifactId>
-      <version>${jettyVersion}</version>
-    </dependency>
-    <dependency>
       <groupId>SaxonSavvyServlet</groupId>
       <artifactId>SaxonSavvyServlet</artifactId>
       <version>1.36</version>
-      <scope>system</scope>
-      <systemPath>${basedir}/lib/SaxonSavvyServlet.jar</systemPath>
     </dependency>
   </dependencies>
   <build>
     <plugins>
       <plugin>
-	<groupId>org.mortbay.jetty</groupId>
-	<artifactId>jetty-maven-plugin</artifactId>
-	<version>${jettyVersion}</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>com.github.jsimone</groupId>
+                  <artifactId>webapp-runner</artifactId>
+                  <version>7.0.40.0</version>
+                  <destFileName>webapp-runner.jar</destFileName>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
