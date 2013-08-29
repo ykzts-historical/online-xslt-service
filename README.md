@@ -1,6 +1,8 @@
 # Online XSLT Service
 
-これはHeroku上で[W3C XSLT Servlet](http://www.w3.org/2005/08/online_xslt/)を動作させるアプリケーションとなっております。W3Cによって配布されているJARをそのまま使用しており、W3C XSLT Servletとの動作差異は存在していないはずです。
+これはHeroku上で[W3C XSLT Servlet](http://www.w3.org/2005/08/online_xslt/)を動作させるアプリケーションとなっております。
+
+W3Cによって配布されているJARをそのまま使用しており、変換結果などの動作差異は存在していないはずです。
 
 ## 使い方
 
